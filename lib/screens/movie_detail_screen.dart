@@ -28,7 +28,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   String formatRuntime(int runtime) {
     int hours = runtime ~/ 60;
     int minutes = runtime % 60;
-    return '${hours}h ${minutes}min' ?? '';
+    return '${hours}h ${minutes}min';
   }
 
   @override
@@ -194,7 +194,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                 var url =
                                     'https://m.search.naver.com/search.naver?query=영화%20${snapshot.data!.title}&where=m&sm=mob_hty.idx&qdt=';
                                 if (await canLaunchUrl(Uri.parse(url))) {
-                                  await canLaunchUrl(Uri.parse(url));
+                                  await launchUrl(Uri.parse(url));
                                 } else {
                                   throw '인터넷 연결 상태를 확인해주세요.';
                                 }
