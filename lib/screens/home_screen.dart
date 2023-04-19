@@ -17,19 +17,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 기기에 따른 크기 설정
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15,
+          padding: EdgeInsets.symmetric(
+            horizontal: width * 0.03,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 60,
+              SizedBox(
+                height: height * 0.1,
               ),
               const Text(
                 'Popular Movies',
@@ -38,28 +41,28 @@ class HomeScreen extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: height * 0.01,
               ),
               FutureBuilder<List<PopularModel>>(
                 future: popularMovies,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return SizedBox(
-                      height: 180,
+                      height: height * 0.3,
                       child: makePopularMovies(snapshot),
                     );
                   }
-                  return const SizedBox(
-                    height: 180,
-                    child: Center(
+                  return SizedBox(
+                    height: height * 0.3,
+                    child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   );
                 },
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: height * 0.01,
               ),
               const Text(
                 'Now in Cinemas',
@@ -68,28 +71,28 @@ class HomeScreen extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: height * 0.01,
               ),
               FutureBuilder<List<NowPlayingModel>>(
                 future: nowPlayingMovies,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return SizedBox(
-                      height: 110,
+                      height: height * 0.17,
                       child: makeNowPlayingMovies(snapshot),
                     );
                   }
-                  return const SizedBox(
-                    height: 110,
-                    child: Center(
+                  return SizedBox(
+                    height: height * 0.17,
+                    child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   );
                 },
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: height * 0.01,
               ),
               const Text(
                 'Coming soon',
@@ -98,21 +101,21 @@ class HomeScreen extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: height * 0.01,
               ),
               FutureBuilder<List<ComingSoonModel>>(
                 future: comingSoonMovies,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return SizedBox(
-                      height: 110,
+                      height: height * 0.17,
                       child: makeComingSoonMovies(snapshot),
                     );
                   }
-                  return const SizedBox(
-                    height: 110,
-                    child: Center(
+                  return SizedBox(
+                    height: height * 0.17,
+                    child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   );
